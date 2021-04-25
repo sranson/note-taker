@@ -10,17 +10,6 @@ const PORT = process.env.PORT || 8080;
 app.use(express.static('./public'));
 
 
-const testNotes = [
-    {
-        "title":"Test Title 1",
-        "text":"Test text 1"
-    }, 
-    {
-        "title": "Test Title 2",
-        "text": "Test Text 2"
-    }
-]
-
 
 // Sets up the Express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));
@@ -35,7 +24,7 @@ app.get('/notes', function(req, res) {
 
 app.get('/api/notes', function(req, res) {
     console.log('SUCCESSFULLY ROUTING TO THE NOTES API');
-    res.json(testNotes)
+    res.sendFile(path.join(__dirname, './db/db.json'));
 })
 
 
