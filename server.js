@@ -15,10 +15,10 @@ app.use(express.static('./public'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-// Routes to HTML Views
+// Routes for HTML Views
 require('./routes/viewRoutes/viewRoutes')(app);
 
-// Routes to API Data
+// Routes for API Data
 require('./routes/apiRoutes/apiRoutes')(app);
 
 
