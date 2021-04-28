@@ -1,12 +1,10 @@
 const express = require('express');
 const path = require('path');
 const fs = require('fs');
+const { parse } = require('path');
 
 
-// Tells node that we are creating an "express" server
 const app = express();
-
-// Sets an initial port. We"ll use this later in our listener
 const PORT = process.env.PORT || 8080;
 app.use(express.static('./public'));
 
@@ -19,7 +17,24 @@ app.use(express.json());
 require('./routes/viewRoutes/viewRoutes')(app);
 
 // Routes for API Data
-require('./routes/apiRoutes/apiRoutes')(app);
+// Getting the API data from db.json file
+app.get('/api/notes', function(req, res) {
+    res.sendFile(path.join(__dirname, './data/noteData.json'));
+})
+
+// Posting new notes to the API via the db.json file
+app.post('/api/notes', function(req, res) {
+    let newNote = req.body;
+    var data = fs.readFileSync('./data/noteData.json');
+    var myObj = JSON.parse(data);
+    myObj.push(newNote)  
+    newNote = JSON.stringify(myObj);
+    fs.writeFile('./data/noteData.json', newNote, err => {
+        if (err) throw err;
+        console.log('NEW NOTE ADDED!');
+    }); 
+    res.json(newNote);
+})
 
 
 app.listen(PORT, () => {
