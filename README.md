@@ -27,7 +27,7 @@
    To create a note, enter a title and the corresponding text and click save. To view a note, click on the note in the left column. To delete a note, click to trash icon.
 
    ## Deployed Site
-   [Note Taker] (https://note-app-sr.herokuapp.com/)
+   [Note Taker](https://note-app-sr.herokuapp.com/)
 
    ## Screenshots
    ![Day Planner](/public/assets/images/NoteTakerScreenshot1.png)
