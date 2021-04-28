@@ -26,6 +26,7 @@
 
    ## Screenshots
    ![Day Planner](/public/assets/images/NoteTakerScreenshot1.png)
+   
    ![Day Planner](/public/assets/images/NoteTakerScreenshot2.png)
 
    ## Questions
