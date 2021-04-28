@@ -51,10 +51,9 @@ app.delete('/api/notes/:id', function(req, res) {
     const { id } = req.params;
     var data = fs.readFileSync('./data/noteData.json');
     var myObj = JSON.parse(data);
-    const deletedNote = myObj.find(data => id === id);
-    let a = myObj.indexOf(deletedNote);
-    console.log(a);
-    myObj.splice(a, 1);
+    const deletedNote = myObj.find(data => id === data.id);
+    index = myObj.indexOf(deletedNote);
+    myObj.splice(index, 1);
     newObj = JSON.stringify(myObj)
     fs.writeFile('./data/noteData.json', newObj, function(err){
         if (err) throw err;
