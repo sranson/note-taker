@@ -45,6 +45,24 @@ app.post('/api/notes', function(req, res) {
 })
 
 
+
+app.delete('/api/notes/:id', function(req, res) {
+    // res.send('DELETE REQUEST CALLED')
+    const { id } = req.params;
+    var data = fs.readFileSync('./data/noteData.json');
+    var myObj = JSON.parse(data);
+    console.log(myObj);
+    const deletedNote = myObj.find(data => id === id);
+    let a = myObj.indexOf(deletedNote);
+    console.log(a);
+    myObj.splice(a, 1);
+    newObj = JSON.stringify(myObj)
+    fs.writeFile('./data/noteData.json', newObj, function(err){
+        if (err) throw err;
+    })
+    res.send('Successfully deleted Note');
+})
+
 app.listen(PORT, () => {
     console.log(`App listening on PORT: ${PORT}`);
   });
