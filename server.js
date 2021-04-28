@@ -31,7 +31,7 @@ app.post('/api/notes', function(req, res) {
         length: 5,
         useLetters: false
       });
-    newNote.noteId = myID;
+    newNote.id = myID;
     console.log(newNote);
     var data = fs.readFileSync('./data/noteData.json');
     var myObj = JSON.parse(data);
